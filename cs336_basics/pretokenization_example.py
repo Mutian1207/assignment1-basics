@@ -1,6 +1,6 @@
 import os
 from typing import BinaryIO
-
+import BpeTokenizer
 
 def find_chunk_boundaries(
     file: BinaryIO,

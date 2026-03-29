@@ -8,7 +8,7 @@ import numpy.typing as npt
 import torch
 from jaxtyping import Bool, Float, Int
 from torch import Tensor
-
+from cs336_basics.tokenizer import BpeTokenizer
 
 def run_linear(
     d_in: int,
@@ -589,4 +589,7 @@ def run_train_bpe(
                 representing that <token1> was merged with <token2>.
                 Merges are ordered by order of creation.
     """
-    raise NotImplementedError
+    bpe = BpeTokenizer(input_path, vocab_size, special_tokens)
+    bpe.train()
+    return bpe.vocab, bpe.merges
+    # raise NotImplementedError
