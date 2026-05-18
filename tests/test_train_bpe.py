@@ -86,3 +86,15 @@ def test_train_bpe_special_tokens(snapshot):
             "merges": merges,
         },
     )
+
+def test_train_bpe_tiny_story(snapshot):
+    """
+    Ensure that the special tokens are added to the vocabulary and not
+    merged with other tokens.
+    """
+    input_path = FIXTURES_PATH / "tinystories_sample_5M.txt"
+    vocab, merges = run_train_bpe(
+        input_path=input_path,
+        vocab_size=10000,
+        special_tokens=["<|endoftext|>"],
+    )
